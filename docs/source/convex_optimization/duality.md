@@ -1,3 +1,3 @@
 # Duality
 
-Dualtiy
+Dualtiy is an important concept in optimization.

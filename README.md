@@ -1,4 +1,4 @@
-# OptimizationNotes
+# Optimization Notes
 A collection of notes on numerical optimization.
 
 ## Setup
