@@ -17,7 +17,7 @@ $$
     d(x) &\leq 0\\
     -d(x) &\leq 0\\
 \end{eqnarray}
-$$
+$$(eqn:d_x_affine_explanation)
 
 and the only kind of function that makes both $d(x)$ and $-d(x)$ convex are affine functions.
 
