@@ -13,4 +13,5 @@ doc = [
     "myst-parser",
     "furo",
     "nbsphinx",
+    "sphinx_book_theme",
 ]
