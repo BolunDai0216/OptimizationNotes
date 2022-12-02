@@ -1,0 +1,13 @@
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "OptimizationNotes"
+authors = [{name = "Bolun Dai", email = "daibolun19950216@gmail.com"}]
+dynamic = ["version", "description"]
+
+[project.optional-dependencies]
+doc = [
+    "sphinx~=4.2.0",
+]
