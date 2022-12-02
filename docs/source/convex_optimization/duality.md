@@ -265,3 +265,11 @@ $$(eqn:lagrangian_dual_problem_def)
 The Lagrangian dual problem is always a concave maximization problem which is the same as a convex minimization problem.
 
 ## Duality Gaps
+
+One question you might have is now that we have the Lagrangian dual problem, if we solve it will it give us the same result as solving the primal problem. If it does we see that there is strong duality, i.e. $f^\star = g^\star$, otherwise $f^\star \geq g^\star$, which we call weak duality. Since the Lagrangian dual function provides a lower bound to the solution to the primal problem, $g^\star$ will never be larger than $f^\star$. 
+
+```{admonition} Slater's Condition
+:class: tip
+
+If the primal is a convex problem, and ther exists at least one strictly feasible $x\in\mathbb{R}^n$, i.e. $\ell_i(x) = 0$ and $h_j(x) < 0$,  then strong duality holds. If some of the $h_j$ are affine, then only $h_j(x) \leq 0$ needs to be satisfied.
+```
