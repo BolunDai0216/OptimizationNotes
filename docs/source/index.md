@@ -1,11 +1,15 @@
-% OptimizationNotes documentation master file, created by
-% sphinx-quickstart on Fri Dec  2 08:41:37 2022.
-% You can adapt this file completely to your liking, but it should at least
-% contain the root `toctree` directive.
+---
+hide-toc: true
+---
 
-# Optimization Notes
+```{include} ../../README.md
+:relative-images:
+```
 
 ```{toctree}
-:caption: 'Contents:'
+:caption: 'Convex Optimization:'
+:hidden:
 :maxdepth: 2
+
+convex_optimization/index
 ```
