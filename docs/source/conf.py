@@ -59,4 +59,8 @@ html_theme = "sphinx_book_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 html_title = "Optimization Notes"
-myst_enable_extensions = ["dollarmath", "amsmath"]
+myst_enable_extensions = [
+    "dollarmath",
+    "amsmath",
+    "html_admonition",
+]
