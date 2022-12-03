@@ -63,4 +63,5 @@ myst_enable_extensions = [
     "dollarmath",
     "amsmath",
     "html_admonition",
+    "colon_fence",
 ]

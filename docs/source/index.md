@@ -13,3 +13,11 @@ hide-toc: true
 
 convex_optimization/index
 ```
+
+```{toctree}
+:caption: 'Matplotlib Gallery:'
+:hidden:
+:maxdepth: 2
+
+notebooks/index
+```
