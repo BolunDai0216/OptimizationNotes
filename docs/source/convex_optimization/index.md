@@ -40,4 +40,5 @@ and the only kind of function that makes both $d(x)$ and $-d(x)$ convex are affi
 :hidden:
 
 duality
+kkt
 ```
