@@ -118,3 +118,69 @@ $$
 \mathrm{subject\ to}\ &\ Ax = b.
 \end{align}
 $$
+
+We can also see Newton's method as performing a quadratic approximation to the objective and find the minimum to this quadratic approximation. The quadratic approximation in this case is
+
+
+$$
+\widetilde{f}(x) = f(\hat{x}) + \nabla f^T(\hat{x})(x - \hat{x}) + \frac{1}{2}(x - \hat{x})^T\nabla^2f^T(\hat{x})(x - \hat{x})
+$$
+
+For equality constrained convex optimization problems, we require Newton's method to start at a feasible point, thus, we have $A\hat{x} = b$. We also want the point reached after each step to be feasible. Therefore, we are solving the following problem at each time step
+
+$$
+\begin{align}
+\min_x\ &\ f(\hat{x}) + \nabla f^T(\hat{x})(x - \hat{x}) + \frac{1}{2}(x - \hat{x})^T\nabla^2f^T(\hat{x})(x - \hat{x})\\
+\mathrm{subject\ to}\ &\ Ax = b.
+\end{align}
+$$
+
+The solution to this problem $x^\star$ will give us the direction $v = x^\star - x$. Note that 
+
+$$
+Ax^\star = Av + Ax = Av + b = b.
+$$
+
+Therefore, we require $Av = 0$. Then, we can rewrite the approximate optimization problem solved at each time step as
+
+$$
+\begin{align}
+\min_v\ &\ \nabla f^T(\hat{x})v + \frac{1}{2}v^T\nabla^2f^T(\hat{x})v\\
+\mathrm{subject\ to}\ &\ Av = 0.
+\end{align}
+$$
+
+The Lagrangian for this problem is
+
+$$
+L(v, w) = \nabla f^T(\hat{x})v + \frac{1}{2}v^T\nabla^2f^T(\hat{x})v + w^TAv.
+$$
+
+If we write the KKT conditions for this problem we have the stationarity condition as
+
+$$
+\nabla f(\hat{x}) + \nabla^2f^T(\hat{x})v + A^Tw = 0
+$$
+
+and we have the primal feasibility condition as
+
+$$
+Av = 0.
+$$
+
+If we write them together, we have
+
+$$
+\begin{bmatrix}
+\nabla^2f^T(\hat{x}) & A^T\\
+A & \mathbf{0}
+\end{bmatrix}\begin{bmatrix}
+v\\
+w
+\end{bmatrix} = \begin{bmatrix}
+-\nabla f(\hat{x})\\
+\mathbf{0}
+\end{bmatrix}
+$$
+
+Thus, by solving this KKT system we would obtain the update direction $v$, and then we can do a backtracking line search to find the correct step size, and everything else would be the same as the unconstrained damped Newton's method.
