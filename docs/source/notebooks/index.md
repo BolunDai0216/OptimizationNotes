@@ -6,4 +6,5 @@ The code for generating the figures used in these notes are also provided
 :hidden:
 
 NewtonsMethod
+BarrierMethod
 ```
