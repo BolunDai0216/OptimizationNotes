@@ -84,6 +84,11 @@ And we have the optimization algorithm as
 
 This gives us our first method for solving an inequality constrained optimization problem.
 
+```{admonition} Central Path
+:class: tip
+We define the solution to {eq}`eqn:inequality_constrained_opt_problem_with_log_barrier` as $x^\star$, and we can see that the solution as a function of $t$, i.e., $x^\star(t)$. The path obtained by varying $t$ is called the **central path**.
+```
+
 ## Perturbed KKT Conditions
 
 One weird thing about the above algorithm is the termination condition $m/t \leq \epsilon$, let's take a look to see how that is chosen. If we write the Lagrangian for the problem in {eq}`eqn:inequality_constrained_opt_problem_with_log_barrier`, we have
@@ -95,28 +100,38 @@ $$
 If we write out the KKT conditions for {eq}`eqn:inequality_constrained_opt_problem_with_log_barrier`, the stationarity condition becomes
 
 $$
-t\nabla f(x) - \sum_{i=1}^{m}{\frac{1}{h_i(x)}\nabla h_i(x)} + A^T\bar{u} = 0.
+t\nabla f(x^\star(t)) - \sum_{i=1}^{m}{\frac{1}{h_i(x^\star(t))}\nabla h_i(x^\star(t))} + A^T\bar{u}^\star(t) = 0.
 $$
 
 Then, by dividing $t$ on both sides we get 
 
 $$
-\nabla f(x) + \sum_{i=1}^{m}{\frac{1}{-th_i(x)}\nabla h_i(x)} + \frac{1}{t}A^T\bar{u} = 0.
+\nabla f(x^\star(t)) + \sum_{i=1}^{m}{\frac{1}{-th_i(x^\star(t))}\nabla h_i(x^\star(t))} + \frac{1}{t}A^T\bar{u}^\star(t) = 0.
 $$
 
 We can see that this is the same as the stationarity condition for the original problem in {eq}`eqn:inequality_constrained_opt_problem` if we write
 
 $$
-v_i = \frac{1}{-th_i(x)}\ \ \ \ u = \frac{1}{t}\bar{u}
+v_i^\star(t) = \frac{1}{-th_i(x^\star(t))}\ \ \ \ u^\star(t) = \frac{1}{t}\bar{u}^\star(t)
 $$
 
 note the since $h_i(x) < 0$ and $t > 0$ we have $v_i > 0$, which makes it dual feasible. Then, if we write the Lagrangian dual function at the optimal primal solution $x^\star(t)$ we have
 
 $$
 \begin{align}
-g(u, v) &= f(x^\star(t)) + u^T(Ax^\star(t) - b) + \sum_{i=1}^{m}{v_i\nabla h_i(x^\star(t))}\\
+g(u^\star(t), v^\star(t)) &= f(x^\star(t)) + (u^\star(t))^T(Ax^\star(t) - b) + \sum_{i=1}^{m}{v_i^\star(t)\nabla h_i(x^\star(t))}\\
         &= f(x^\star(t)) - \frac{m}{t}.
 \end{align}
 $$
 
-Thus, we can see that the duality gap is at most $m/t$. Which explains why $m/t \leq \epsilon$ is chosen as the termination condition. 
+Thus, we can see that the duality gap is at most $m/t$. Which explains why $m/t \leq \epsilon$ is chosen as the termination condition. This leads to the:
+
+```{admonition} Perturbed KKT Conditions
+:class: tip 
+- Stationarity: $\displaystyle\nabla f(x^\star(t)) + \sum_{i=1}^{m}{v_i^\star(t)\nabla h_i(x^\star(t))} + A^Tu^\star(t) = 0$;
+- Primal feasibility: $Ax^\star(t) = b$ and $h_i(x^\star(t)) \leq 0$;
+- Dual feasibility: $v_i^\star(t) > 0$;
+- Complementary slackness: $\displaystyle v_i^\star(t)\nabla h_i(x^\star(t)) = -1/t$.
+```
+
+which will become very useful in our subsequent topic.
