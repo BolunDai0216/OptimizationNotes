@@ -131,7 +131,7 @@ Thus, we can see that the duality gap is at most $m/t$. Which explains why $m/t 
 - Stationarity: $\displaystyle\nabla f(x^\star(t)) + \sum_{i=1}^{m}{v_i^\star(t)\nabla h_i(x^\star(t))} + A^Tu^\star(t) = 0$;
 - Primal feasibility: $Ax^\star(t) = b$ and $h_i(x^\star(t)) \leq 0$;
 - Dual feasibility: $v_i^\star(t) > 0$;
-- Complementary slackness: $\displaystyle v_i^\star(t)\nabla h_i(x^\star(t)) = -1/t$.
+- Complementary slackness: $\displaystyle v_i^\star(t)h_i(x^\star(t)) = -1/t$.
 ```
 
 which will become very useful in our subsequent topic.

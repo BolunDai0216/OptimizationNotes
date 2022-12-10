@@ -43,4 +43,5 @@ duality
 kkt
 newtons_method
 barrier_method
+primal_dual_ipopt
 ```
