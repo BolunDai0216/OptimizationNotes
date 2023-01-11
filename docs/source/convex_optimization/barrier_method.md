@@ -53,7 +53,7 @@ Log barrier functions under different values of $t$. [[notebook](../notebooks/Ba
 
 We can see that the larger $t$ is the more accurate the approximation becomes.
 
-## Algorithm
+## Barrier Method Algorithm
 
 We transform the problem in {eq}`eqn:opt_problem_with_indicator_function` using log barrier functions to
 

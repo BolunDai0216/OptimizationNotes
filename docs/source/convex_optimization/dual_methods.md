@@ -67,6 +67,10 @@ The following statements are equivalent
 - $x \in \underset{z}{\mathrm{argmin}}(f(z) - y^Tz)$.
 ```
 
+```{dropdown} Proof of Property 2
+The note body will be hidden!
+```
+
 ```{admonition} Property 3
 Assuming that $f$ is closed and convex. Then, the following two statements are equivalent
 - $f$ is strongly convex with parameter $d$;
