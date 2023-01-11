@@ -68,7 +68,41 @@ The following statements are equivalent
 ```
 
 ```{dropdown} Proof of Property 2
-The note body will be hidden!
+**Part 1.1**: We show that $y \in \partial f(x) \Rightarrow x \in \partial f^*(y)$   
+
+From the definition of conjugate functions we know
+
+$$
+-f^*(y) = \min_z\Big(f(z) - z^Ty\Big).
+$$
+
+Thus, using the subgradient optimality condition, for any $z$ that is optimal it must satisfy
+
+$$0\in\partial_z(f(z) - z^Ty) \Leftrightarrow 0\in\partial f(z) - y \Leftrightarrow y\in\partial f(z).$$
+
+Also for any $z$ that satisfies $y\in\partial f(z)$ it must be optimal. Since $y \in \partial f(x)$, then $z = x$ must minimize $f(z) - z^Ty$ over $z$. Define
+
+$$
+f^*(y) := \max_z\Big(z^Ty - f(z)\Big) := \max_z h_z(y)
+$$
+
+Now we need to acknowledging one of the properties of general pointwise maximums: if $f(x) = \max_{s\in\mathcal{S}}f_s(x)$, then
+
+$$
+\mathrm{cl}\Big\{\mathrm{conv}\Big(\bigcup_{s: f_s(x) = f(x)}\partial f_s(x)\Big)\Big\}\subseteq\partial f(x).
+$$
+
+Note that $\partial h_z(y) = z$. Then, by the definition of general pointwise maximums, we have
+
+$$
+\mathrm{cl}\Big\{\mathrm{conv}\Big(\bigcup_{z: z\mathrm{s\ that\ achieve\ the\ max}} z\Big)\Big\}\subseteq\partial f^*(y).
+$$
+
+Hence, we have $x \in \partial f^*(y)$.
+
+**Part 1.2** We show that $y \in \partial f(x) \Leftarrow x \in \partial f^*(y)$   
+
+From the above derivation we know that $y \in \partial f(x) \Rightarrow x \in \partial f^*(y)$. Then, we can conclude that $x \in \partial f^*(y) \Rightarrow y \in \partial f^{**}(x)$, given that $f = f^{**}$, we have $x \in \partial f^*(y) \Rightarrow y \in \partial f(x)$.
 ```
 
 ```{admonition} Property 3
