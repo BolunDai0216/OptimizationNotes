@@ -147,8 +147,8 @@ then we have (from property 4)
 
 $$
 \begin{align}
-    x_u^* &= \underset{z}{\mathrm{argmin}}(f(x) - u^Tx) = \nabla f^*(u)\\
-    x_v^* &= \underset{z}{\mathrm{argmin}}(f(x) - v^Tx) = \nabla f^*(v).
+    x_u^\star &= \underset{z}{\mathrm{argmin}}(f(x) - u^Tx) = \nabla f^*(u)\\
+    x_v^\star &= \underset{z}{\mathrm{argmin}}(f(x) - v^Tx) = \nabla f^*(v).
 \end{align}
 $$
 
@@ -187,3 +187,5 @@ If $f$ is strictly convex, then $\nabla f^*(y) = \underset{z}{\mathrm{argmin}}(f
 ```{dropdown} Proof of Property 4
 Since $f$ is strictly convex, then $f(z) - y^Tz$ would also be strictly convex over $z$. Then, for the strictly convex function $f(z) - y^Tz$ we would have a unique minimizer. TBC.
 ```
+
+## Dual (Sub)Gradient Methods
