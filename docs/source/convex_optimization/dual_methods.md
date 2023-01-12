@@ -103,6 +103,16 @@ Hence, we have $x \in \partial f^*(y)$.
 **Part 1.2** We show that $y \in \partial f(x) \Leftarrow x \in \partial f^*(y)$   
 
 From the above derivation we know that $y \in \partial f(x) \Rightarrow x \in \partial f^*(y)$. Then, we can conclude that $x \in \partial f^*(y) \Rightarrow y \in \partial f^{**}(x)$, given that $f = f^{**}$, we have $x \in \partial f^*(y) \Rightarrow y \in \partial f(x)$.
+
+**Part 2.1** We show that $\displaystyle y \in \partial f(x) \Rightarrow x \in \underset{z}{\mathrm{argmin}}(f(z) - y^Tz)$   
+
+The subgradient optimality condition for $f(z) - y^Tz$ is $0 \in \partial_z(f(z) - y^Tz)$, which can be written as $y \in \partial_z f(z)$. Since $y \in \partial f(x)$, then $x$ must minimize $f(z) - y^Tz$.
+
+**Part 2.2** We show that $\displaystyle y \in \partial f(x) \Leftarrow x \in \underset{z}{\mathrm{argmin}}(f(z) - y^Tz)$ 
+
+If $x$ minimizes $f(z) - y^Tz$, then from the subgradient optimality condition we have $0 \in \partial f(x) - y$, i.e. $y \in \partial f(x)$.
+
+Thus, we can see all three statements are equivalent.
 ```
 
 ```{admonition} Property 3
@@ -111,6 +121,69 @@ Assuming that $f$ is closed and convex. Then, the following two statements are e
 - $\nabla f^*$ is Lipschitz with parameter $1/d$.
 ```
 
+```{dropdown} Proof of Property 3
+If we have a strongly convex function $g$ with parameter $d$, then it has the property
+
+$$
+g(y) \geq g(x) + \nabla g(x)^T(y - x) + \frac{d}{2}\|y - x\|_2^2
+$$
+
+if $x$ is a minimizer, i.e. $\nabla g(x) = 0$, then we have 
+
+$$
+g(y) \geq g(x) + \frac{d}{2}\|y - x\|_2^2,\ \forall y.
+$$
+
+If we define two functions
+
+$$
+\begin{align}
+    g_1(x) &= f(x) - u^Tx\\
+    g_2(x) &= f(x) - v^Tx
+\end{align}
+$$
+
+then we have (from property 4)
+
+$$
+\begin{align}
+    x_u^* &= \underset{z}{\mathrm{argmin}}(f(x) - u^Tx) = \nabla f^*(u)\\
+    x_v^* &= \underset{z}{\mathrm{argmin}}(f(x) - v^Tx) = \nabla f^*(v).
+\end{align}
+$$
+
+This leads to
+
+$$
+\begin{align}
+    g_1(x_v) &\geq g_1(x_u) + \frac{d}{2}\|x_v - x_u\|_2^2\\
+    g_2(x_u) &\geq g_2(x_v) + \frac{d}{2}\|x_v - x_u\|_2^2
+\end{align}
+$$
+
+if we add them up we have $g_1(x_v) + g_2(x_u) \geq g_1(x_u) + g_2(x_v) + d\|x_v - x_u\|_2^2$, which is the same as 
+
+$$
+f(x_v) - u^Tx_v + f(x_u) - v^Tx_u \geq f(x_u) - u^Tx_u + f(x_v) - v^Tx_v + d\|x_v - x_u\|_2^2
+$$
+
+which can be cleaned up and get
+
+$$
+(u - v)^T(x_u - x_v) \geq d\|x_v - x_u\|_2^2.
+$$
+
+From Cauchy-Schwartz, we then can get 
+
+$$
+\|u - v\|_2\|x_u - x_v\|_2 \geq d\|x_v - x_u\|_2^2 \rightarrow \frac{1}{d}\|u - v\|_2 \geq \|x_v - x_u\|_2.
+$$
+```
+
 ```{admonition} Property 4
 If $f$ is strictly convex, then $\nabla f^*(y) = \underset{z}{\mathrm{argmin}}(f(z) - y^Tz)$.
+```
+
+```{dropdown} Proof of Property 4
+Since $f$ is strictly convex, then $f(z) - y^Tz$ would also be strictly convex over $z$. Then, for the strictly convex function $f(z) - y^Tz$ we would have a unique minimizer. TBC.
 ```
