@@ -68,6 +68,6 @@ This update is the core of the PD-IPOpt method.
 
 
 
-## Backtracking Line Search
+## Backtracking Line Search for PD-IPOpt
 
 The backtracing line search is a variant of the version for damped Newton's method.

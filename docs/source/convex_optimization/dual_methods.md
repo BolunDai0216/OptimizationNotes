@@ -181,11 +181,11 @@ $$
 ```
 
 ```{admonition} Property 4
-If $f$ is strictly convex, then $\nabla f^*(y) = \underset{z}{\mathrm{argmin}}(f(z) - y^Tz)$.
+If $f$ is strictly convex, then $\nabla f^*(y) = \underset{z}{\mathrm{argmin}}(f(z) - y^Tz)$. 
 ```
 
 ```{dropdown} Proof of Property 4
-Since $f$ is strictly convex, then $f(z) - y^Tz$ would also be strictly convex over $z$. Then, for the strictly convex function $f(z) - y^Tz$ we would have a unique minimizer. TBC.
+Since $f$ is strictly convex, then $f(z) - y^Tz$ would also be strictly convex over $z$. Then, for the strictly convex function $f(z) - y^Tz$ we would have a unique minimizer. From property 2 we know that this unique minimizer belongs to the set of $\partial f^*(y)$. And given the fact that for strictly convex functions its conjugate function is differentiable (see [here](https://math.stackexchange.com/questions/4616640/is-the-conjugate-function-of-a-strictly-convex-function-continuously-differentia/4616707#4616707])) we know that this unique minimizer would be $\nabla f^*(y)$.
 ```
 
 ## Dual (Sub)Gradient Methods
