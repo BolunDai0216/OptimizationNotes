@@ -38,21 +38,25 @@ Start for an initial dual guess $v^{(0)}$, and repeats for $k = 1, 2, 3, \cdots$
 
 - $\displaystyle x^{(k)} \in \underset{x}{\mathrm{argmin}}\Big[f(x) + \frac{\rho}{2}\|\min\{0, b - Ax\}\|_2^2 + (v^{(k-1)})^TAx\Big]$
 - $v^{(k)} = \Big[v^{(k-1)} + \rho(Ax^{(k)} - b)\Big]_+$
-
-where the step sizes are chosen to be $t_k = \rho$.
+- $\rho \leftarrow \alpha\rho$.
 ```
 
-When there are both equality $Ax = b$ and inequality $Cx \leq d$ constraints, we have the general form of AL as
+When there are both equality $Ax = b$ and inequality $Cx \leq d$ constraints, define
+
+$$
+\tilde{f}(x) = f(x) + \frac{\rho_e}{2}\|Ax - b\|_2^2 + \frac{\rho_i}{2}\|\min\{0, d - Cx\}\|_2^2
+$$
+
+we have the general form of AL as
 
 ```{admonition} AL with Inequality Constraints
 :class: tip
 
 Start for an initial dual guess $v^{(0)}$, and repeats for $k = 1, 2, 3, \cdots$
 
-- $\displaystyle x^{(k)} \in \underset{x}{\mathrm{argmin}}\Big[f(x) + \frac{\rho}{2}\|Ax - b\|_2^2 + \frac{\rho}{2}\|\min\{0, d - Cx\}\|_2^2 + (u^{(k-1)})^TAx + (v^{(k-1)})^TAx\Big]$
-- $u^{(k)} = u^{(k-1)} + \rho(Ax^{(k)} - b)$
-- $v^{(k)} = \Big[v^{(k-1)} + \rho(Cx^{(k)} - d)\Big]_+$
-
-where the step sizes are chosen to be $t_k = \rho$.
+- $\displaystyle x^{(k)} \in \underset{x}{\mathrm{argmin}}\Big[\tilde{f}(x) + (u^{(k-1)})^TAx + (v^{(k-1)})^TAx\Big]$
+- $u^{(k)} = u^{(k-1)} + \rho_e(Ax^{(k)} - b)$
+- $v^{(k)} = \Big[v^{(k-1)} + \rho_i(Cx^{(k)} - d)\Big]_+$
+- $\rho_i \leftarrow \alpha\rho_i$
 ```
 
