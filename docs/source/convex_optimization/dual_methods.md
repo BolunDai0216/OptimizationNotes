@@ -250,13 +250,13 @@ $$
 where $x = [x_1, \cdots, x_B] \in \mathbb{R}^n$ with $x_i \in \mathbb{R}^{n_i}$ and $A = [A_1, \cdots, A_B]$ with $A_i \in \mathbb{R}^{m \times n_i}$. The first step of the dual subgradient method becomes
 
 $$
-x^{(k)} \in \underset{x}{\mathrm{argmin}}\Big[\sum_{i=1}^{B}{f_i(x_i^{(k-1)})} + (u^{(k-1)})^T\sum_{i=1}^{B}{A_ix_i^{(k-1)}}\Big]
+x^{(k)} \in \underset{x}{\mathrm{argmin}}\Big[\sum_{i=1}^{B}{f_i(x_i)} + (u^{(k-1)})^T\sum_{i=1}^{B}{A_ix_i}\Big]
 $$
 
 we can also write is as
 
 $$
-x_i^{(k)} \in \underset{x_i}{\mathrm{argmin}}\Big[f_i(x_i^{(k-1)}) + (u^{(k-1)})^TA_ix_i^{(k-1)}\Big],\ i = 1, \cdots, B.
+x_i^{(k)} \in \underset{x_i}{\mathrm{argmin}}\Big[f_i(x_i) + (u^{(k-1)})^TA_ix_i\Big],\ i = 1, \cdots, B.
 $$
 
 Then, we have the dual decomposition algorithm as
@@ -266,7 +266,7 @@ Then, we have the dual decomposition algorithm as
 
 Start for an initial dual guess $u^{(0)}$, and repeats for $k = 1, 2, 3, \cdots$
 
-- $x_i^{(k)} \in \underset{x_i}{\mathrm{argmin}}\Big[f_i(x_i^{(k-1)}) + (u^{(k-1)})^TA_ix_i^{(k-1)}\Big],\ i = 1, \cdots, B$
+- $x_i^{(k)} \in \underset{x_i}{\mathrm{argmin}}\Big[f_i(x_i) + (u^{(k-1)})^TA_ix_i\Big],\ i = 1, \cdots, B$
 - $\displaystyle u^{(k)} = u^{(k-1)} + t_k(\sum_{i=1}^{B}{A_ix_i^{(k)}} - b)$
 
 where the step sizes $t_k$ are chosen using backtracing line search.
@@ -288,7 +288,7 @@ we have the dual decomposition algorithm as
 
 Start for an initial dual guess $u^{(0)}$, and repeats for $k = 1, 2, 3, \cdots$
 
-- $x_i^{(k)} \in \underset{x_i}{\mathrm{argmin}}\Big[f_i(x_i^{(k-1)}) + (u^{(k-1)})^TA_ix_i^{(k-1)}\Big],\ i = 1, \cdots, B$
+- $x_i^{(k)} \in \underset{x_i}{\mathrm{argmin}}\Big[f_i(x_i) + (u^{(k-1)})^TA_ix_i\Big],\ i = 1, \cdots, B$
 - $\displaystyle u^{(k)} = \Big[u^{(k-1)} + t_k(\sum_{i=1}^{B}{A_ix_i^{(k)}} - b)\Big]_+$
 
 where the step sizes $t_k$ are chosen using backtracing line search and $(u_+)_i = \max\{0, u_i\}.$
