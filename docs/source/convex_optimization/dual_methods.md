@@ -293,3 +293,7 @@ Start for an initial dual guess $u^{(0)}$, and repeats for $k = 1, 2, 3, \cdots$
 
 where the step sizes $t_k$ are chosen using backtracing line search and $(u_+)_i = \max\{0, u_i\}.$
 ```
+
+## Convergence Guarantees
+
+When the objective function $f$ is strongly convex with parameter $d$, the dual gradient ascent with $t_k = d$ converges at the rate of $\mathcal{O}(1/\epsilon)$. Additionally, if $\nabla f$ is also Lipschitz with parameter $L$, then $t_k = 2 / (1/d + 1/L)$ converges at the rate of $\mathcal{O}(\log(1/\epsilon))$.
