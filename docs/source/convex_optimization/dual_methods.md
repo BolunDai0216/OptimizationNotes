@@ -189,3 +189,107 @@ Since $f$ is strictly convex, then $f(z) - y^Tz$ would also be strictly convex o
 ```
 
 ## Dual (Sub)Gradient Methods
+
+From {eq}`eqn:dual_method_lagrangian_dual_conjugate_form`, we know that we can write the Lagrangian dual function using conjugate functions. Then, we have the Lagrangian dual problem as
+
+$$
+\max_{u}\ g(u) = \max_{u}\Big[-f^*(-A^Tu) - u^Tb\Big].
+$$
+
+We can have the subgradient of $g$ as
+
+$$
+\partial g(u) = A\partial f^*(-A^Tu) - b.
+$$
+
+From property 2, we have the relationship
+
+$$
+x\in\partial f^*(-A^Tu) \iff x\in\underset{z}{\mathrm{argmin}}\Big[f(z) + u^TAz\Big].
+$$
+
+Then, we can write the subgradient of $g$ as
+
+$$
+\partial g(u) = Ax - b\ \mathrm{where}\ x\in\underset{z}{\mathrm{argmin}}\Big[f(z) + u^TAz\Big].
+$$
+
+The steps for the **dual subgradient method** for maximizing the dual objective is as follows
+
+```{admonition} Dual Subgradient Method
+:class: tip
+
+Start for an initial dual guess $u^{(0)}$, and repeats for $k = 1, 2, 3, \cdots$
+
+- $x^{(k)} \in \underset{x}{\mathrm{argmin}}\Big[f(x) + (u^{(k-1)})^TAx\Big]$
+- $u^{(k)} = u^{(k-1)} + t_k(Ax^{(k)} - b)$
+
+where the step sizes $t_k$ are chosen using backtracing line search.
+```
+
+## Dual Decomposition
+
+The problem in consideration for dual decomposition is
+
+$$
+\begin{align}
+    \min_x\ &\ \sum_{i=1}^{B}{f_i(x_i)}\\
+    \mathrm{subject\ to}\ &\ Ax = b
+\end{align}
+$$
+
+which can also be written as
+
+$$
+\begin{align}
+    \min_x\ &\ \sum_{i=1}^{B}{f_i(x_i)}\\
+    \mathrm{subject\ to}\ &\  \sum_{i=1}^{B}{A_ix_i}= b
+\end{align}
+$$
+
+where $x = [x_1, \cdots, x_B] \in \mathbb{R}^n$ with $x_i \in \mathbb{R}^{n_i}$ and $A = [A_1, \cdots, A_B]$ with $A_i \in \mathbb{R}^{m \times n_i}$. The first step of the dual subgradient method becomes
+
+$$
+x^{(k)} \in \underset{x}{\mathrm{argmin}}\Big[\sum_{i=1}^{B}{f_i(x_i^{(k-1)})} + (u^{(k-1)})^T\sum_{i=1}^{B}{A_ix_i^{(k-1)}}\Big]
+$$
+
+we can also write is as
+
+$$
+x_i^{(k)} \in \underset{x_i}{\mathrm{argmin}}\Big[f_i(x_i^{(k-1)}) + (u^{(k-1)})^TA_ix_i^{(k-1)}\Big],\ i = 1, \cdots, B.
+$$
+
+Then, we have the dual decomposition algorithm as
+
+```{admonition} Dual Decomposition Method with Equality Constraints
+:class: tip
+
+Start for an initial dual guess $u^{(0)}$, and repeats for $k = 1, 2, 3, \cdots$
+
+- $x_i^{(k)} \in \underset{x_i}{\mathrm{argmin}}\Big[f_i(x_i^{(k-1)}) + (u^{(k-1)})^TA_ix_i^{(k-1)}\Big],\ i = 1, \cdots, B$
+- $\displaystyle u^{(k)} = u^{(k-1)} + t_k(\sum_{i=1}^{B}{A_ix_i^{(k)}} - b)$
+
+where the step sizes $t_k$ are chosen using backtracing line search.
+```
+
+For the problem with inequality constraints
+
+$$
+\begin{align}
+    \min_x\ &\ \sum_{i=1}^{B}{f_i(x_i)}\\
+    \mathrm{subject\ to}\ &\  \sum_{i=1}^{B}{A_ix_i} \leq b
+\end{align}
+$$
+
+we have the dual decomposition algorithm as
+
+```{admonition} Dual Decomposition Method with Inequality Constraints
+:class: tip
+
+Start for an initial dual guess $u^{(0)}$, and repeats for $k = 1, 2, 3, \cdots$
+
+- $x_i^{(k)} \in \underset{x_i}{\mathrm{argmin}}\Big[f_i(x_i^{(k-1)}) + (u^{(k-1)})^TA_ix_i^{(k-1)}\Big],\ i = 1, \cdots, B$
+- $\displaystyle u^{(k)} = \Big[u^{(k-1)} + t_k(\sum_{i=1}^{B}{A_ix_i^{(k)}} - b)\Big]_+$
+
+where the step sizes $t_k$ are chosen using backtracing line search and $(u_+)_i = \max\{0, u_i\}.$
+```
