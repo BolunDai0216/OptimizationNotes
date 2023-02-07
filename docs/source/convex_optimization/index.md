@@ -45,4 +45,5 @@ newtons_method
 barrier_method
 primal_dual_ipopt
 dual_methods
+augmented_lagrangian
 ```
