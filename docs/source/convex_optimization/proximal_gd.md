@@ -35,5 +35,11 @@ $$
 \beta^+ = S_{t\lambda}(\beta - t\nabla g(\beta)) = S_{t\lambda}(\beta + tX^T(y - X\beta)).
 $$
 
-This is called the Iterative Soft-thresholding Algorithm (ISTA).
+This is called the Iterative Soft-thresholding Algorithm (ISTA). In the general case of
+
+$$
+\min_\beta g(\beta) + \lambda\|\beta\|_1
+$$
+
+where $g$ is convex and differentiable, we have the update as $\beta^+ = S_{t\lambda}(\beta - t\nabla g(\beta))$.
 
