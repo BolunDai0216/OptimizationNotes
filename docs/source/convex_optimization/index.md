@@ -47,4 +47,5 @@ primal_dual_ipopt
 dual_methods
 augmented_lagrangian
 subgradient
+proximal_gd
 ```
