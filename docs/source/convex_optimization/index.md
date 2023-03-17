@@ -48,4 +48,5 @@ dual_methods
 augmented_lagrangian
 subgradient
 proximal_gd
+admm
 ```
