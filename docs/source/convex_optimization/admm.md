@@ -26,12 +26,20 @@ $$
 
 The ADMM algorithm then repeats the following steps
 
+```{admonition} ADMM
+:class: tip
+
 - $x^{(k)} = \underset{x}{\mathrm{argmin}}\ L_\rho(x, z^{(k-1)}, u^{(k-1)})$
 - $z^{(k)} = \underset{z}{\mathrm{argmin}}\ L_\rho(x^{(k)}, z, u^{(k-1)})$
 - $u^{(k)} = u^{(k-1)} + \rho(Ax^{(k)} + Bz^{(k)} - c)$
+```
 
 The ADMM algorithm is also expressed in the **scaled form**, where we define $w = u / \rho$, and write the above steps as
+
+```{admonition} ADMM in Scaled Form
+:class: tip
 
 - $x^{(k)} = \displaystyle \underset{x}{\mathrm{argmin}}\ f(x) + \frac{\rho}{2}\Big\|Ax + Bz^{(k-1)} - c + w^{(k-1)}\Big\|_2^2$
 - $z^{(k)} = \displaystyle \underset{x}{\mathrm{argmin}}\ g(z) + \frac{\rho}{2}\Big\|Ax^{(k)} + Bz - c + w^{(k-1)}\Big\|_2^2$
 - $w^{(k)} = w^{(k-1)} + Ax^{(k)} + Bz^{(k)} - c$
+```
