@@ -43,3 +43,45 @@ The ADMM algorithm is also expressed in the **scaled form**, where we define $w 
 - $z^{(k)} = \displaystyle \underset{x}{\mathrm{argmin}}\ g(z) + \frac{\rho}{2}\Big\|Ax^{(k)} + Bz - c + w^{(k-1)}\Big\|_2^2$
 - $w^{(k)} = w^{(k-1)} + Ax^{(k)} + Bz^{(k)} - c$
 ```
+## Connection to Proximal Operators
+
+If we consider the problem of
+
+$$
+\min_x f(x) + g(x)
+$$
+
+we can write it in ``ADMM" form
+
+$$
+\begin{align}
+    \min_{x, z}\ &\ f(x) + g(z)\\
+    \mathrm{subject\ to}\ &\ x = z
+\end{align}
+$$
+
+We can then write the ADMM updates in scaled form. Note that in this case we have $A = I$, $B = -I$, and $c = \mathbf{0}$. First, we have the $x$ update as
+
+$$
+\begin{align}
+    x^+ &= \underset{x}{\mathrm{argmin}}\Big(f(x) + \frac{\rho}{2}\Big\|x - z + w\Big\|_2^2\Big)\\
+        &= \underset{x}{\mathrm{argmin}}\Big(\frac{1}{2\cdot 1/\rho}\Big\|x - z + w\Big\|_2^2 + f(x)\Big)\\
+        &= \mathrm{prox}_{f, 1/\rho}(z - w).
+\end{align}
+$$
+
+Then, we have the $z$ update as
+
+$$
+\begin{align}
+    z^+ &= \underset{z}{\mathrm{argmin}}\Big(g(z) + \frac{\rho}{2}\Big\|x^+ - z + w\Big\|_2^2\Big)\\
+        &= \underset{z}{\mathrm{argmin}}\Big(\frac{1}{2\cdot 1/\rho}\Big\|z - (x^+ + w)\Big\|_2^2 + g(z)\Big)\\
+        &= \mathrm{prox}_{g, 1/\rho}(x^+ + w).
+\end{align}
+$$
+
+Finally, we have the $w$ update as
+
+$$
+w^+ = w + x^+ - z^+.
+$$
